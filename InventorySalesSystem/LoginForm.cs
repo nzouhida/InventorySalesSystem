@@ -110,3 +110,9 @@ namespace InventorySalesSystem
     }
 }
 
+//Username login: First name (ex. Noah)
+//Password login: First name + 1234 (ex. Noah1234)
+
+// For Proffesor
+// Username: Diba
+// Password: Diba1234
