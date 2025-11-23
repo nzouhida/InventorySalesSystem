@@ -91,6 +91,10 @@ namespace InventorySalesSystem
             // successful login
             MessageBox.Show($"Welcome, {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            this.Hide(); //hides login form and opens interface form 
+            Interface form1 = new Interface();
+            form1.ShowDialog();//pauses until signing out or exited from interface form
+            this.Show();
             //Todo: open MainForm and hide this form
             //MainForm main = new MainForm(username, fullName);
             // main.Show();
@@ -106,6 +110,16 @@ namespace InventorySalesSystem
                 Application.Exit();
 
             }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

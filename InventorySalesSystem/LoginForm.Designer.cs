@@ -53,6 +53,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(200, 27);
             txtUsername.TabIndex = 1;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // lblPassword
             // 
@@ -123,10 +124,12 @@
             Controls.Add(txtUsername);
             Controls.Add(lblUsername);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             MinimizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "User Login";
+            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
