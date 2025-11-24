@@ -1,0 +1,5 @@
+﻿P001,Notebook,Stationery,10,4.99
+P002,Pencil,Stationary,50,0.99
+P003,Backpack,Bags,8,29.99
+P004,Water Bottle,Accessories,15,9.99
+P005,USB Flash Drive,Electronics,20,14.99

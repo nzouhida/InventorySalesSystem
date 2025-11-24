@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace InventorySalesSystem
 {
 
     public partial class Interface : Form
-    {
+    { // 0 = Product ID, 1 = Name, 2 = Category, 3 = Quantity, 4= Price
+        private string[,] _products;
+        private int _productCount = 0;
+        
         DataTable inventory = new DataTable();
         public Interface()
         {
@@ -21,12 +25,77 @@ namespace InventorySalesSystem
 
         private void Interface_Load(object sender, EventArgs e)
         {
+            // Set up the inventory table Columns (for display)
             inventory.Columns.Add("Product ID");
             inventory.Columns.Add("Name");
             inventory.Columns.Add("Category");
             inventory.Columns.Add("Quantity");
             inventory.Columns.Add("Price");
-            InventoryView.DataSource = inventory;
+           
+            // Load from products.txt into 2d array
+            LoadProductsFromFile();
+
+            // Show Products in DataGridView
+            DisplayProductsInGrid();
+
+           
+        }
+
+        private void LoadProductsFromFile()
+        {
+            string filePath = "products.txt";
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("products.txt not found. Please make sure the file exists.", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string[] lines = File.ReadAllLines(filePath);
+            _products = new string[lines.Length, 5]; // 5 columns per product
+            _productCount = lines.Length;
+
+            for (int i =0; i < lines.Length; i++)
+            {
+                string[] parts = lines[i].Split(',');
+
+                if (parts.Length >= 5)
+                {
+                    _products[i, 0] = parts[0].Trim(); //Product ID
+                    _products[i, 1] = parts[1].Trim(); // Name
+                    _products[i, 2] = parts[2].Trim(); // Category
+                    _products[i, 3] = parts[3].Trim(); // Quantity
+                    _products[i, 4] = parts[4].Trim(); // Price
+
+                }
+            }
+        }
+
+        private void DisplayProductsInGrid()
+        {
+            //clear existing rows
+            inventory.Rows.Clear();
+
+            if (_products == null || _productCount == 0)
+                return;
+
+            for (int i = 0; i < _productCount; i++)
+            {
+                inventory.Rows.Add(
+                    _products[i,0], // Product ID
+                    _products[i,1], // Name
+                    _products[i,2], // Category
+                    _products[i,3], // Quantity
+                    _products[i,4]  // Price
+                    );
+
+                // Bind DataTable to the grid
+                InventoryView.DataSource = inventory;
+
+
+
+
+            }
+
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
