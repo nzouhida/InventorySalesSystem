@@ -36,12 +36,13 @@
             btnLogin = new Button();
             btnExit = new Button();
             lblMessage = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(191, 92);
+            lblUsername.Location = new Point(206, 113);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(78, 20);
             lblUsername.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(295, 89);
+            txtUsername.Location = new Point(311, 113);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(200, 27);
             txtUsername.TabIndex = 1;
@@ -58,7 +59,7 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(195, 140);
+            lblPassword.Location = new Point(206, 162);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(73, 20);
             lblPassword.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(290, 137);
+            txtPassword.Location = new Point(311, 159);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(200, 27);
@@ -83,7 +84,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(206, 235);
+            btnLogin.Location = new Point(239, 235);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(100, 29);
             btnLogin.TabIndex = 5;
@@ -110,11 +111,23 @@
             lblMessage.Size = new Size(0, 20);
             lblMessage.TabIndex = 7;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Impact", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(327, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(111, 48);
+            label1.TabIndex = 8;
+            label1.Text = "76ers";
+            label1.Click += label1_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(lblMessage);
             Controls.Add(btnExit);
             Controls.Add(btnLogin);
@@ -128,7 +141,7 @@
             MinimizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "User Login";
+            Text = "``";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -144,5 +157,6 @@
         private Button btnLogin;
         private Button btnExit;
         private Label lblMessage;
+        private Label label1;
     }
 }
