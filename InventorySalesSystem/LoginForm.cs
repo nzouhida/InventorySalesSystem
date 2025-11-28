@@ -93,12 +93,10 @@ namespace InventorySalesSystem
 
             this.Hide(); //hides login form and opens interface form 
             Interface form1 = new Interface();
-            form1.ShowDialog();//pauses until signing out or exited from interface form
+            //pauses until signing out or exited from interface form
+            form1.ShowDialog();
             this.Show();
-            //Todo: open MainForm and hide this form
-            //MainForm main = new MainForm(username, fullName);
-            // main.Show();
-            // this.Hide();
+            
         }
 
         private void btnExit_Click(object sender, EventArgs e)

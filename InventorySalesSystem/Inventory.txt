@@ -1,0 +1,9 @@
+12390,Beans,Produce,200,9
+32419,Mouse,Computers,100,53
+19292,Bike,Outdoors,12,499
+99922,Stapler,Office,1000,5
+23111,Paper,Office,640,2
+71819,Pencil,Office,700,1
+12333,Cilantro,Produce,400,0.78
+18238,Wrench,Tools,100,8
+12304,Coffee,Beverages,1000,5

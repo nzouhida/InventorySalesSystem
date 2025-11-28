@@ -16,10 +16,11 @@ namespace InventorySalesSystem
 
     public partial class Interface : Form
     {
+        //public use of the data table and filePath within the interface form.
         DataTable inventory = new DataTable();
         string filePath = "Inventory.txt";
         
-
+       
         public Interface()
         {
             InitializeComponent();
@@ -28,13 +29,16 @@ namespace InventorySalesSystem
         
         private void Interface_Load(object sender, EventArgs e)
         {
+            //preloads the column headers of the grid.
             inventory.Columns.Add("Product ID",typeof(string));
             inventory.Columns.Add("Name", typeof(string));
             inventory.Columns.Add("Category", typeof(string));
-            inventory.Columns.Add("Quantity", typeof(string));
-            inventory.Columns.Add("Price", typeof(string));
-
+            inventory.Columns.Add("Quantity", typeof(int));
+            inventory.Columns.Add("Price", typeof(decimal));
+            
             InventoryView.DataSource = inventory;
+            //Formats the last column "Price" to currency 
+            InventoryView.Columns["Price"].DefaultCellStyle.Format = "c";
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
@@ -50,8 +54,9 @@ namespace InventorySalesSystem
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void checkInv_Click(object sender, EventArgs e)
         {            
+            //Checks for existing file and will not create a new file. There is only one inventory file.
             if (!File.Exists(filePath))
             {
                 MessageBox.Show("Inventory.txt file not found. Please place it in the project folder.", "File Error",
@@ -59,29 +64,34 @@ namespace InventorySalesSystem
                 return;
 
             }
+            //Clears and refreshes the grid, acts as an updater when check inventory is pressed multiple times.
+            inventory.Rows.Clear();
 
             string[] lines = File.ReadAllLines(filePath);
             string[] rowSplit;
-            //populates the grid
+
+            //Populates the grid
             for (int i = 0; i < lines.Length; i++)
             {
                 rowSplit = lines[i].ToString().Split(',');
-                string[] rows = new string[] { rowSplit[0], rowSplit[1], 
-                    rowSplit[2], rowSplit[3], rowSplit[4] };
+                string[] rows = new string[] { rowSplit[0], rowSplit[1],
+                    rowSplit[2], rowSplit[3], rowSplit[4]};
                 
                 inventory.Rows.Add(rows);
             }
+            //Makes the grid visible with all the data
             InventoryView.Visible = true;
+            
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {                        
             string id = textBox1.Text;
             string name = textBox2.Text;
             string category = textBox3.Text;
             string quantity = textBox4.Text;
             string price = textBox5.Text;
-            //add to grid view
+            //adds inputs to grid view
             inventory.Rows.Add(id, name, category, quantity, price);
 
 
@@ -92,11 +102,22 @@ namespace InventorySalesSystem
             File.AppendAllText(filePath, commaString + Environment.NewLine);
 
             //clears text box after adding
-            button5_Click(sender, e);
+            btnClear_Click(sender, e);
+            checkInv_Click(sender, e);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
+            // Save all rows from the DataTable to the file
+            string[] lines = new string[inventory.Rows.Count];
+            for (int i = 0; i < inventory.Rows.Count; i++)
+            {
+                lines[i] = string.Join(",", inventory.Rows[i].ItemArray);
+            }
+            File.WriteAllLines(filePath, lines);
+
+            MessageBox.Show("Changes saved.");
+            checkInv_Click(sender, e); // Refresh the grid to reflect changes
 
         }
 
@@ -107,7 +128,7 @@ namespace InventorySalesSystem
 
         private void InventoryView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -115,7 +136,7 @@ namespace InventorySalesSystem
 
         }
 
-        private void delete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             if (InventoryView.SelectedRows.Count > 0)
             {
@@ -141,7 +162,7 @@ namespace InventorySalesSystem
             
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
             textBox2.Text = "";

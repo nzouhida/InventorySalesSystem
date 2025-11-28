@@ -32,25 +32,25 @@
             txtUsername = new TextBox();
             lblPassword = new Label();
             txtPassword = new TextBox();
-            button1 = new Button();
             btnLogin = new Button();
             btnExit = new Button();
             lblMessage = new Label();
-            label1 = new Label();
+            grpName = new Label();
             SuspendLayout();
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(206, 113);
+            lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.Location = new Point(194, 151);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(78, 20);
+            lblUsername.Size = new Size(111, 28);
             lblUsername.TabIndex = 0;
             lblUsername.Text = "Username:";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(311, 113);
+            txtUsername.Location = new Point(311, 155);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(200, 27);
             txtUsername.TabIndex = 1;
@@ -59,32 +59,24 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(206, 162);
+            lblPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPassword.Location = new Point(199, 208);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(73, 20);
+            lblPassword.Size = new Size(106, 28);
             lblPassword.TabIndex = 2;
             lblPassword.Text = "Password:";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(311, 159);
+            txtPassword.Location = new Point(311, 212);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(200, 27);
             txtPassword.TabIndex = 3;
             // 
-            // button1
-            // 
-            button1.Location = new Point(262, 270);
-            button1.Name = "button1";
-            button1.Size = new Size(8, 8);
-            button1.TabIndex = 4;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(239, 235);
+            btnLogin.Location = new Point(235, 289);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(100, 29);
             btnLogin.TabIndex = 5;
@@ -94,7 +86,7 @@
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(411, 235);
+            btnExit.Location = new Point(411, 289);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(100, 29);
             btnExit.TabIndex = 6;
@@ -111,27 +103,28 @@
             lblMessage.Size = new Size(0, 20);
             lblMessage.TabIndex = 7;
             // 
-            // label1
+            // grpName
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Impact", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(327, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(111, 48);
-            label1.TabIndex = 8;
-            label1.Text = "76ers";
-            label1.Click += label1_Click;
+            grpName.AutoSize = true;
+            grpName.FlatStyle = FlatStyle.Flat;
+            grpName.Font = new Font("Impact", 40F);
+            grpName.Location = new Point(311, 33);
+            grpName.Name = "grpName";
+            grpName.Size = new Size(187, 82);
+            grpName.TabIndex = 8;
+            grpName.Text = "76ers";
+            grpName.Click += label1_Click;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.CornflowerBlue;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            Controls.Add(grpName);
             Controls.Add(lblMessage);
             Controls.Add(btnExit);
             Controls.Add(btnLogin);
-            Controls.Add(button1);
             Controls.Add(txtPassword);
             Controls.Add(lblPassword);
             Controls.Add(txtUsername);
@@ -153,10 +146,9 @@
         private TextBox txtUsername;
         private Label lblPassword;
         private TextBox txtPassword;
-        private Button button1;
         private Button btnLogin;
         private Button btnExit;
         private Label lblMessage;
-        private Label label1;
+        private Label grpName;
     }
 }

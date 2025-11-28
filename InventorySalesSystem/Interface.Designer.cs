@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            checkInv = new Button();
+            btnAdd = new Button();
+            btnEdit = new Button();
             InventoryView = new DataGridView();
             label1 = new Label();
             textBox1 = new TextBox();
@@ -39,8 +42,8 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             textBox5 = new TextBox();
-            delete = new Button();
-            clear = new Button();
+            btnDelete = new Button();
+            btnClear = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -60,49 +63,69 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += btnSignOut_Click;
             // 
-            // button2
+            // checkInv
             // 
-            button2.ForeColor = SystemColors.ControlText;
-            button2.Location = new Point(12, 231);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(122, 40);
-            button2.TabIndex = 1;
-            button2.Text = "Check Inventory";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            checkInv.ForeColor = SystemColors.ControlText;
+            checkInv.Location = new Point(12, 231);
+            checkInv.Margin = new Padding(3, 4, 3, 4);
+            checkInv.Name = "checkInv";
+            checkInv.Size = new Size(122, 40);
+            checkInv.TabIndex = 1;
+            checkInv.Text = "Check Inventory";
+            checkInv.UseVisualStyleBackColor = true;
+            checkInv.Click += checkInv_Click;
             // 
-            // button3
+            // btnAdd
             // 
-            button3.Location = new Point(12, 282);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(123, 35);
-            button3.TabIndex = 2;
-            button3.Text = "Add Product";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnAdd.Location = new Point(12, 282);
+            btnAdd.Margin = new Padding(3, 4, 3, 4);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(123, 35);
+            btnAdd.TabIndex = 2;
+            btnAdd.Text = "Add Product";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // button4
+            // btnEdit
             // 
-            button4.Location = new Point(12, 325);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(123, 31);
-            button4.TabIndex = 3;
-            button4.Text = "Edit Product";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnEdit.Location = new Point(12, 325);
+            btnEdit.Margin = new Padding(3, 4, 3, 4);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(123, 31);
+            btnEdit.TabIndex = 3;
+            btnEdit.Text = "Edit Product";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // InventoryView
             // 
             InventoryView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             InventoryView.BackgroundColor = Color.White;
+            InventoryView.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            InventoryView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             InventoryView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             InventoryView.Location = new Point(174, 231);
             InventoryView.Margin = new Padding(3, 4, 3, 4);
             InventoryView.Name = "InventoryView";
+            InventoryView.RightToLeft = RightToLeft.No;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            InventoryView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             InventoryView.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            InventoryView.RowsDefaultCellStyle = dataGridViewCellStyle3;
             InventoryView.Size = new Size(728, 329);
             InventoryView.TabIndex = 4;
             InventoryView.Visible = false;
@@ -155,34 +178,35 @@
             textBox5.Size = new Size(125, 27);
             textBox5.TabIndex = 10;
             // 
-            // delete
+            // btnDelete
             // 
-            delete.Location = new Point(26, 403);
-            delete.Name = "delete";
-            delete.Size = new Size(94, 29);
-            delete.TabIndex = 11;
-            delete.Text = "Delete";
-            delete.UseVisualStyleBackColor = true;
-            delete.Click += delete_Click;
+            btnDelete.Location = new Point(26, 403);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 29);
+            btnDelete.TabIndex = 11;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // clear
+            // btnClear
             // 
-            clear.Location = new Point(26, 438);
-            clear.Name = "clear";
-            clear.Size = new Size(94, 29);
-            clear.TabIndex = 13;
-            clear.Text = "clear";
-            clear.UseMnemonic = false;
-            clear.UseVisualStyleBackColor = true;
-            clear.Visible = false;
-            clear.Click += button5_Click;
+            btnClear.Location = new Point(26, 438);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(94, 29);
+            btnClear.TabIndex = 13;
+            btnClear.Text = "Clear";
+            btnClear.UseMnemonic = false;
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Visible = false;
+            btnClear.Click += btnClear_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(193, 147);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(185, 147);
             label2.Name = "label2";
-            label2.Size = new Size(79, 20);
+            label2.Size = new Size(105, 28);
             label2.TabIndex = 14;
             label2.Text = "Product ID";
             label2.Click += label2_Click;
@@ -190,36 +214,40 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(361, 147);
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(359, 147);
             label3.Name = "label3";
-            label3.Size = new Size(49, 20);
+            label3.Size = new Size(64, 28);
             label3.TabIndex = 15;
             label3.Text = "Name";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(502, 147);
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(496, 147);
             label4.Name = "label4";
-            label4.Size = new Size(69, 20);
+            label4.Size = new Size(92, 28);
             label4.TabIndex = 16;
             label4.Text = "Category";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(662, 147);
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(648, 147);
             label5.Name = "label5";
-            label5.Size = new Size(65, 20);
+            label5.Size = new Size(88, 28);
             label5.TabIndex = 17;
             label5.Text = "Quantity";
             // 
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
             label6.Location = new Point(812, 147);
             label6.Name = "label6";
-            label6.Size = new Size(41, 20);
+            label6.Size = new Size(54, 28);
             label6.TabIndex = 18;
             label6.Text = "Price";
             // 
@@ -234,8 +262,8 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(clear);
-            Controls.Add(delete);
+            Controls.Add(btnClear);
+            Controls.Add(btnDelete);
             Controls.Add(textBox5);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -243,9 +271,9 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(InventoryView);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnEdit);
+            Controls.Add(btnAdd);
+            Controls.Add(checkInv);
             Controls.Add(button1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Interface";
@@ -259,9 +287,9 @@
         #endregion
 
         private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button checkInv;
+        private Button btnAdd;
+        private Button btnEdit;
         private DataGridView InventoryView;
         private Label label1;
         private TextBox textBox1;
@@ -269,8 +297,8 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox5;
-        private Button delete;
-        private Button clear;
+        private Button btnDelete;
+        private Button btnClear;
         private Label label2;
         private Label label3;
         private Label label4;
