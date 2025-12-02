@@ -43,8 +43,9 @@ namespace InventorySalesSystem
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
+            //ask users if they want to sign out
             var result = MessageBox.Show("Are you sure you want to sign out?", "Sign Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+            //closes interface and goes back to login screen
             if (result == DialogResult.Yes)
             {
                 this.Close();
@@ -79,8 +80,7 @@ namespace InventorySalesSystem
                 
                 inventory.Rows.Add(rows);
             }
-            //Makes the grid visible with all the data
-            InventoryView.Visible = true;
+            
             
         }
 
@@ -114,8 +114,10 @@ namespace InventorySalesSystem
             {
                 lines[i] = string.Join(",", inventory.Rows[i].ItemArray);
             }
+            //Write over text file with updated changes
             File.WriteAllLines(filePath, lines);
-
+            
+            //let users know that changes have been saved
             MessageBox.Show("Changes saved.");
             checkInv_Click(sender, e); // Refresh the grid to reflect changes
 
@@ -138,6 +140,7 @@ namespace InventorySalesSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            //deletes the highlighted row and rewrites the text file.
             if (InventoryView.SelectedRows.Count > 0)
             {
                 int rowIndexToDelete = InventoryView.SelectedRows[0].Index;
@@ -164,6 +167,7 @@ namespace InventorySalesSystem
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            //clears the text boxes 
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";

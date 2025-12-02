@@ -128,7 +128,6 @@
             InventoryView.RowsDefaultCellStyle = dataGridViewCellStyle3;
             InventoryView.Size = new Size(728, 329);
             InventoryView.TabIndex = 4;
-            InventoryView.Visible = false;
             InventoryView.CellContentClick += InventoryView_CellContentClick;
             // 
             // label1
